@@ -99,7 +99,7 @@ class Snake:
         self.direction = Direction.RIGHT
 
     def get_head_pos(self) -> Block:
-        return self.snake_body[0]
+        return deepcopy(self.snake_body[0])
 
     def change_direction(self, new_direciton: Direction) -> None:
         # Жыланның бірден қарама-қарсы бағытта қозғала алмайтыды
@@ -114,7 +114,7 @@ class Snake:
 
     def move(self, grow = False) -> None:
         # Жыланды жылжыту
-        next_head_pos = deepcopy(self.get_head_pos())
+        next_head_pos = self.get_head_pos()
         if self.direction == Direction.UP:
             next_head_pos.move_up()
         if self.direction == Direction.DOWN:
